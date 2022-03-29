@@ -1,36 +1,20 @@
 package com.deekol.pcbuilder.domain;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @MappedSuperclass
 @Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class BasicPart {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class BasicPart extends Basic {
 	
 	private String maker;
 	private String name;
 	private String specification;
-	private String description;
-	private BigDecimal buy;
-	private BigDecimal sale;
-	
-	//todo: oneToMany oldPc, newPc
-	
-	@Column(name = "creation_date")
-	private LocalDate creationDate = LocalDate.now();
 }
