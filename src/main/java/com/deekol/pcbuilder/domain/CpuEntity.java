@@ -18,4 +18,5 @@ public class CpuEntity extends BasicPart {
 	private Integer cores;
 	private Integer flows;
 	private Integer frequency;
+	private String socket;
 }

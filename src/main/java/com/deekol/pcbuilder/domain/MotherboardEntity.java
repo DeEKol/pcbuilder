@@ -17,5 +17,5 @@ import lombok.NoArgsConstructor;
 public class MotherboardEntity extends BasicPart {
 	private String proportions;
 	private String socket;
-	private String cheapset;
+	private String chipset;
 }
