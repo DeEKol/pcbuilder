@@ -44,7 +44,7 @@ public class MotherboardController {
 		return motherboardRepository.save(motherboardFromDb);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
 		motherboardRepository.deleteById(id);
 	}

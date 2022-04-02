@@ -44,7 +44,7 @@ public class GpuController {
 		return gpuRepository.save(gpuFromDb);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
 		gpuRepository.deleteById(id);
 	}

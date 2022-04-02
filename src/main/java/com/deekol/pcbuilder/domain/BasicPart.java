@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BasicPart extends Basic {
-	
 	private String maker;
 	private String name;
 	private String specification;

@@ -44,7 +44,7 @@ public class CpuController {
 		return cpuRepository.save(cpuFromDb);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
 		cpuRepository.deleteById(id);
 	}

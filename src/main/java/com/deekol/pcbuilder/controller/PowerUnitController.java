@@ -44,7 +44,7 @@ public class PowerUnitController {
 		return powerUnitRepository.save(powerUnitFromDb);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
 		powerUnitRepository.deleteById(id);
 	}

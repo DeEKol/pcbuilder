@@ -1,5 +1,6 @@
 package com.deekol.pcbuilder.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deekol.pcbuilder.domain.PcEntity;
 import com.deekol.pcbuilder.payload.request.PcRequest;
+import com.deekol.pcbuilder.payload.response.PcResponse;
 import com.deekol.pcbuilder.repository.BodyRepository;
 import com.deekol.pcbuilder.repository.CpuFanRepository;
 import com.deekol.pcbuilder.repository.CpuRepository;
@@ -35,25 +37,36 @@ public class PcController {
 	private final BodyRepository bodyRepository;
 	
 	@GetMapping
-	public List<PcEntity> getAll() {
-		return pcRepository.findAll();
+	public List<PcResponse> getAll() {
+		List<PcEntity> pcEntities = pcRepository.findAll();
+		List<PcResponse> pcResponses = new ArrayList<>();
+		
+		for(PcEntity e : pcEntities) {
+			pcResponses.add(pcEntityToPcResponse(e));
+		}
+		return pcResponses;
 	}
 	
 	@GetMapping("{id}")
-	public PcEntity getOne(@PathVariable("id") Long id) {
-		return pcRepository.findById(id).get();
+	public PcResponse getOne(@PathVariable("id") Long id) {
+		PcEntity pcEntity = pcRepository.findById(id).get();
+		
+		return pcEntityToPcResponse(pcEntity);
 	}
 	
 	@PostMapping
-	public PcEntity create(@RequestBody PcRequest pcRequest) {
-		return pcRepository.save(pcRequestToPcEntity(pcRequest));
+	public PcResponse create(@RequestBody PcRequest pcRequest) {
+		PcEntity pcEntity = pcRequestToPcEntity(pcRequest);
+		pcRepository.save(pcEntity);
+		return pcEntityToPcResponse(pcEntity);
 	}
 	
 	@PutMapping("{id}")
-	public PcEntity update(@PathVariable("id") PcEntity pcFromDb, @RequestBody PcRequest pcRequest) {
+	public PcResponse update(@PathVariable("id") PcEntity pcFromDb, @RequestBody PcRequest pcRequest) {
 		PcEntity pcEntity = pcRequestToPcEntity(pcRequest);
 		BeanUtils.copyProperties(pcEntity, pcFromDb, "id");
-		return pcRepository.save(pcFromDb);
+		pcRepository.save(pcFromDb);
+		return pcEntityToPcResponse(pcFromDb);
 	}
 	
 	@DeleteMapping("{id}")
@@ -83,5 +96,31 @@ public class PcController {
 			pcEntity.setBodyEntity(bodyRepository.findById(pcRequest.getBodyId()).get());
 		}
 		return pcEntity;
+	}
+	
+	PcResponse pcEntityToPcResponse(PcEntity pcEntity) {
+		PcResponse pcResponse = new PcResponse();
+		pcResponse.setId(pcEntity.getId());
+		pcResponse.setDescription(pcEntity.getDescription());
+		pcResponse.setBuy(pcEntity.getBuy());
+		pcResponse.setSale(pcEntity.getSale());
+		pcResponse.setSpending(pcEntity.getSpending());
+		if (pcEntity.getCpuEntity() != null) {
+			pcResponse.setCpuId(pcEntity.getCpuEntity().getId());
+		}
+		if (pcEntity.getGpuEntity() != null) {
+			pcResponse.setGpuId(pcEntity.getGpuEntity().getId());
+		}
+		if (pcEntity.getCpuFanEntity() != null) {
+			pcResponse.setCpuFanId(pcEntity.getCpuFanEntity().getId());
+		}
+		if (pcEntity.getPowerUnitEntity() != null) {
+			pcResponse.setPowerUnitId(pcEntity.getPowerUnitEntity().getId());
+		}
+		if (pcEntity.getBodyEntity() != null) {
+			pcResponse.setBodyId(pcEntity.getBodyEntity().getId());
+		}
+		
+		return pcResponse;
 	}
 }

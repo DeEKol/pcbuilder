@@ -44,7 +44,7 @@ public class BodyController {
 		return bodyRepository.save(bodyFromDb);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
 		bodyRepository.deleteById(id);
 	}

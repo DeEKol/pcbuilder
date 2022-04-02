@@ -44,7 +44,7 @@ public class CpuFanController {
 		return cpuFanRepository.save(cpuFanFromDb);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") Long id) {
 		cpuFanRepository.deleteById(id);
 	}
