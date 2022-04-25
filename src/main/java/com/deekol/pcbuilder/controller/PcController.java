@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,8 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/pc")
 @RequiredArgsConstructor
+//todo Переделать CrossOrigin
+@CrossOrigin
 public class PcController {
 	private final PcRepository pcRepository;
 	private final CpuRepository cpuRepository;
