@@ -3,6 +3,7 @@ package com.deekol.pcbuilder.controller;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/cpu")
 @RequiredArgsConstructor
+@CrossOrigin
 public class CpuController {
 	private final CpuRepository cpuRepository;
 	
