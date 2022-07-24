@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class BodyEntity extends BasicPart {
 	private String proportions;
 	
-	@Column(name = "bu_proportions")
-	private String buProportions;
+	//TODO buProportions change to puProportions
+	@Column(name = "pu_proportions")
+	private String puProportions;
 }

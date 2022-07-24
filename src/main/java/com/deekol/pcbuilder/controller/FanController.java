@@ -91,6 +91,7 @@ public class FanController {
 		fanResponse.setDescription(fanEntity.getDescription());
 		fanResponse.setBuy(fanEntity.getBuy());
 		fanResponse.setSale(fanEntity.getSale());
+		fanResponse.setCreationDate(fanEntity.getCreationDate());
 		fanResponse.setMaker(fanEntity.getMaker());
 		fanResponse.setName(fanEntity.getName());
 		fanResponse.setSpecification(fanEntity.getSpecification());

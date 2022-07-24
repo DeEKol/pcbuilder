@@ -92,6 +92,7 @@ public class RamController {
 		ramResponse.setDescription(ramEntity.getDescription());
 		ramResponse.setBuy(ramEntity.getBuy());
 		ramResponse.setSale(ramEntity.getSale());
+		ramResponse.setCreationDate(ramEntity.getCreationDate());
 		ramResponse.setMaker(ramEntity.getMaker());
 		ramResponse.setName(ramEntity.getName());
 		ramResponse.setSpecification(ramEntity.getSpecification());
