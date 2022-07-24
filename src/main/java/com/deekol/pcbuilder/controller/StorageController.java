@@ -91,6 +91,7 @@ public class StorageController {
 		storageResponse.setDescription(storageEntity.getDescription());
 		storageResponse.setBuy(storageEntity.getBuy());
 		storageResponse.setSale(storageEntity.getSale());
+		storageResponse.setCreationDate(storageEntity.getCreationDate());
 		storageResponse.setMaker(storageEntity.getMaker());
 		storageResponse.setName(storageEntity.getName());
 		storageResponse.setSpecification(storageEntity.getSpecification());

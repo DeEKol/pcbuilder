@@ -107,6 +107,7 @@ public class PcController {
 		pcResponse.setDescription(pcEntity.getDescription());
 		pcResponse.setBuy(pcEntity.getBuy());
 		pcResponse.setSale(pcEntity.getSale());
+		pcResponse.setCreationDate(pcEntity.getCreationDate());
 		pcResponse.setSpending(pcEntity.getSpending());
 		if (pcEntity.getCpuEntity() != null) {
 			pcResponse.setCpuId(pcEntity.getCpuEntity().getId());

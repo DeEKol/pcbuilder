@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @CrossOrigin
 public class CpuController {
 	private final CpuRepository cpuRepository;
-	
+
 	@GetMapping
 	public List<CpuEntity> getAll() {
 		return cpuRepository.findAll();

@@ -1,6 +1,7 @@
 package com.deekol.pcbuilder.payload.response;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,8 @@ public class PcResponse {
 	private String description;
 	private BigDecimal buy;
 	private BigDecimal sale;
+	
+	private LocalDate creationDate;
 	
 	private BigDecimal spending;
 	private Long cpuId;
